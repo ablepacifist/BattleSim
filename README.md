@@ -12,6 +12,7 @@ exhaustion
 battle damage
 movement speed
 health
+range(if any)
 
 Unit types:
 swordman
