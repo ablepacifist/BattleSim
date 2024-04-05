@@ -1,12 +1,21 @@
+import java.io.IOException;
 import java.util.Scanner;
 public class warGame {
     public static void main(String[] args) {
-        battle hills = new battle();
+        battle hills= new battle();
         boolean end = false;
         int turnCounter = 0;
-        System.out.println("welcome to war! \n please enter comand(h for help)");
+        boolean init = false;
         // prepare the input
         Scanner input = new Scanner(System.in);
+        System.out.println("input 2 file names(separated by a comma ,):");
+        String filenameString[] = input.nextLine().split(",");
+
+            try {
+                hills= new battle(filenameString[0],filenameString[1]);
+            } catch (IOException e) {
+            }
+        System.out.println("welcome to war! \n please enter comand(h for help)");
         while(!end){// go until flag is true
            String comand[] = input.nextLine().split(" ");
            if(comand[0].equalsIgnoreCase("h")){
@@ -17,6 +26,7 @@ public class warGame {
             System.out.println("end of turn:"+turnCounter);
            }else if(comand[0].equalsIgnoreCase("end")){
             end = true;
+           }else if(comand[0].equalsIgnoreCase("init")){
            }
         }
     }
@@ -49,7 +59,7 @@ public class warGame {
                     }
                     endTurn=true;
                 }else if(toDo[0].equalsIgnoreCase("h")){//help
-                    System.out.println("s- skip/end turn,\nmove-move current unit,\nt- change target(if appicable)\n");
+                    System.out.println("s- skip/end turn,\nmove-move current unit,\nt- change target(if appicable)\nend - only use if you dont want to attack\n");
                 }else if(toDo[0].equalsIgnoreCase("move")){// beguin with a move
                     if(toDo.length < 2){//need to get how much moved by
                         System.out.println("by how much(in feet)\n units movement speed:"+maxMove);
