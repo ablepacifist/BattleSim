@@ -15,7 +15,7 @@ public class set{
     //constructor
     public set(){
         // create dummy node for top and last
-        top= new Node(-1,new Node(2147483647,null,new archers(0, "dummie small")),new archers(0, "dummie large"));
+        top= new Node(-1,new Node(2147483647,null,new archer(0, "dummie small")),new archer(0, "dummie large"));
 
         last =top.link;
         last.link=top;
