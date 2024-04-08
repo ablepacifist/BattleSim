@@ -60,19 +60,23 @@ public class warGame {
                     endTurn=true;
                 }else if(toDo[0].equalsIgnoreCase("h")){//help
                     System.out.println("s- skip/end turn,\nmove-move current unit,\nt- change target(if appicable)\nend - only use if you dont want to attack\n");
-                }else if(toDo[0].equalsIgnoreCase("move")){// beguin with a move
+                }else if(toDo[0].equalsIgnoreCase("move") || toDo[0].equalsIgnoreCase("m")){// beguin with a move
                     if(toDo.length < 2){//need to get how much moved by
                         System.out.println("by how much(in feet)\n units movement speed:"+maxMove);
                         toDo = input.nextLine().split(" ");
-                        if(maxMove>=Integer.parseInt(toDo[0])){
-                            double a =(Integer.parseInt(toDo[0]));
-                            double b =maxMove;
-                            next.getUnit().setExhausted(-(a/b));// if full move units are exhausted 
-                            maxMove = maxMove - Integer.parseInt(toDo[0]); //?? check to make sure its getting the right element in toDo
-                            next.getUnit().setTarget(null);
-                            System.out.println("Note: must retarget after every move\nunit movement speed:"+maxMove);
-                        }else{
+                        try{
+                           if(maxMove>=Integer.parseInt(toDo[0])){
+                                double a =(Integer.parseInt(toDo[0]));
+                                double b =maxMove;
+                                next.getUnit().setExhausted(-(a/b));// if full move units are exhausted 
+                                maxMove = maxMove - Integer.parseInt(toDo[0]); //?? check to make sure its getting the right element in toDo
+                                next.getUnit().setTarget(null);
+                                System.out.println("Note: must retarget after every move\nunit movement speed:"+maxMove);
+                            }else{
                             System.out.println("cant move that far");
+                            }
+                        }catch(java.lang.NumberFormatException ohNo){
+                            System.out.println("needs to be a number >:(\n");
                         }
                     }
                 }else if(toDo[0].equalsIgnoreCase("t")){// target enemy and deal damage
