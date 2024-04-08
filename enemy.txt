@@ -1,0 +1,4 @@
+Tongas Gillroy
+swordsmen,4000,U1
+archer,5000,U2
+spearmen,4000,U3
