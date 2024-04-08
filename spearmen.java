@@ -2,22 +2,31 @@ import java.lang.Math;
 public class spearmen implements unit {
     //public unit target;
     public static String type = "Spearmen";
+    private static int baseSpeed = 150;
     private String name;
     private int maxHealth= 10000;// that is 10k troops. max amount
     private int currentHealth; // set this equal to number of troops left in the unit out of 10k
-    private int speed; // in feet?
+    private int speed;// in feet?
     private int meleeDamage=75;
     private int range=100;
     private int rangeDamage=0;
     private double exhausted;
     private unit target;
 //constructor
+//defult
     public spearmen(int currentHealth, String name){
         this.name = name;
         this.currentHealth=currentHealth;
-        exhausted=1.0;
-        this.speed=150;
+        this.exhausted=1.0;
+        this.speed = baseSpeed;
     }
+//from txt file
+public spearmen(int currentHealth, String name,double exhausted){
+    this.name = name;
+    this.currentHealth=currentHealth;
+    this.exhausted = exhausted;
+    this.speed = (int)(baseSpeed * this.exhausted); 
+}
     //other
     /* 
     public void dealMeleeDamage(unit target){
@@ -29,9 +38,15 @@ public class spearmen implements unit {
     }
     */
     public void dealDamage(unit target){
-        this.exhausted= this.exhausted-.1;
-        if(target != null){
-        target.takeDamage((int)( meleeDamage*((double)currentHealth/(double)maxHealth)));
+        if(this.exhausted -.1 >= 0){
+            this.exhausted= this.exhausted-.1;
+            if(target != null){
+                int damage = (int)( meleeDamage*((double)currentHealth/(double)maxHealth));
+                target.takeDamage(damage);
+                System.out.println("did "+ damage +" damage");
+            }
+        }else{
+            System.out.println("too tired to fight");
         }
     }
     //setters
@@ -53,6 +68,17 @@ public class spearmen implements unit {
     }
     public void setExhausted(double value){
         this.exhausted = this.exhausted+value;
+        this.speed = (int)(baseSpeed * this.exhausted); 
+    }
+    public void changeExhausted(double value){
+        if(this.exhausted +value >1){
+            this.exhausted =1.0;
+        }else if(this.exhausted +value <0){
+            this.exhausted=0.0;
+        }else{
+            this.exhausted = this.exhausted +value;
+        }
+        this.speed=(int)(baseSpeed * this.exhausted); 
     }
 //getters
     public String getName() {

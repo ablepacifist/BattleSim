@@ -15,6 +15,7 @@ public interface unit {
     public void setCurrentHealth(int health);
     public void takeDamage(int damage);
     public void setExhausted(double value);
+    public void changeExhausted(double value);
     public void setSpeed(int newSpeed);
 //other
   //  public void move(int distance);

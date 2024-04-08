@@ -22,6 +22,7 @@ public class warGame {
             warGame.help();
            }else if(comand[0].equalsIgnoreCase("battle")){
             warGame.takeTurn(hills,input);
+            endTurn(hills);
             turnCounter++;
             System.out.println("end of turn:"+turnCounter);
            }else if(comand[0].equalsIgnoreCase("end")){
@@ -54,7 +55,6 @@ public class warGame {
                 if(toDo[0].equalsIgnoreCase("s")){//skip turn
                     if(!battleBool && next.getUnit().getTarget() != null){
                         next.getUnit().dealDamage(next.getUnit().getTarget());
-                        System.out.println("did damage");
                         battleBool=true;
                     }
                     endTurn=true;
@@ -82,7 +82,6 @@ public class warGame {
                         unit target = battleOrder.getUnitFromName(toDo[0]);
                         if(target != null){
                             next.getUnit().dealDamage(target);
-                            System.out.println("did damage");
                             battleBool =true;
                             next.getUnit().setTarget(target);
                         }
@@ -94,6 +93,14 @@ public class warGame {
                 }
             }
            // next.unit.dealDamage(next.target);
+        }
+    }
+    public static void endTurn(battle feild){
+        set battleOrder = feild.turnOrder();
+        set.Node next = battleOrder.getTop();
+        while(next.getLink() != battleOrder.getLast()){
+            next = next.getLink();
+            next.getUnit().changeExhausted(0.5);;
         }
     }
 }
