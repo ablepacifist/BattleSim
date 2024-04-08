@@ -302,7 +302,7 @@ public void print(int setNum){
         if(counter%1 ==0){
         System.out.print("\n");
         }
-        System.out.print(next.unit.getName()+"("+next.unit.getType()+"):"+next.unit.getCurrentHealth()+"/"+next.unit.getMaxHealth()+",");
+        System.out.print(next.unit.getName()+"("+next.unit.getType()+"):"+next.unit.getCurrentHealth()+"/"+next.unit.getMaxHealth()+",Fatigue: "+next.unit.getExhausted()+".");
         counter++;
         next= next.link;
     }
@@ -320,7 +320,7 @@ public void print(int setNum){
         this.unit = unit;
         }
         public void print() {
-            System.out.print(unit.getName()+"("+unit.getType()+"):"+unit.getCurrentHealth()+"/"+unit.getMaxHealth()+",");
+            System.out.print(unit.getName()+"("+unit.getType()+"):"+unit.getCurrentHealth()+"/"+unit.getMaxHealth()+",Exh = "+unit.getExhausted()+". ");
        
         }
         //setters

@@ -64,18 +64,18 @@ public battle(){
             token = read_word.split(",");
             this.armyTwo.insertName(read_word);
             //txt file format:
-            // unitType,health,unitName
+            // unitType,health,exhausted,unitName
             // iterate over file and insert all into armyTwo
             while (theFile.hasNextLine()) {
                read_word = theFile.nextLine();
                token = read_word.split(",");
                // check type and create unit
                if(token[0].equalsIgnoreCase("swordsmen")){
-                  toInsertUnit = new swordsman(Integer.parseInt(token[1]), token[2]);
+                  toInsertUnit = new swordsman(Integer.parseInt(token[1]), token[3],Double.parseDouble(token[2]));
                }else if(token[0].equalsIgnoreCase("spearmen")){
-                  toInsertUnit = new spearmen(Integer.parseInt(token[1]), token[2]);
+                  toInsertUnit = new spearmen(Integer.parseInt(token[1]), token[3],Double.parseDouble(token[2]));
                }else if(token[0].equalsIgnoreCase("archer")){
-                  toInsertUnit = new archer(Integer.parseInt(token[1]), token[2]);
+                  toInsertUnit = new archer(Integer.parseInt(token[1]), token[3],Double.parseDouble(token[2]));
                }
                // insert unit and change id
                army.insert(this.counter, toInsertUnit);
