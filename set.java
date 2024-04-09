@@ -308,6 +308,22 @@ public void print(int setNum){
     }
     System.out.print("}");
 }
+// will search through list and look for all units who target given arg
+public set hasTarget(unit inRange){
+        Node next = top.link;
+        set targetedbyUnits= new set();
+        unit toCheck;
+        while(next!=last){
+            toCheck = next.getUnit().getTarget();
+            //compare the two units
+            if(toCheck !=null && toCheck.getName().equals(inRange.getName())){
+                targetedbyUnits.insert(next.getData(),next.getUnit());
+            }
+            //next unit in list
+            next = next.link;
+        }
+        return targetedbyUnits;
+}
     // private class of Node
     class Node{
         private int data;
@@ -333,6 +349,9 @@ public void print(int setNum){
         }
         public unit getUnit(){
             return unit;
+        }
+        private int getData(){
+            return this.data;
         }
     }
 

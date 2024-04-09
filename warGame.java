@@ -6,54 +6,64 @@ public class warGame {
         boolean end = false;
         int turnCounter = 0;
         boolean init = false;
+        String fileNameOne,fileNameTwo;
         // prepare the input
         Scanner input = new Scanner(System.in);
         System.out.println("input 2 file names(separated by a comma ,):");
         String filenameString[] = input.nextLine().split(",");
-
+        // make sure there is no errors in file name
             try {
                 hills= new battle(filenameString[0],filenameString[1]);
+                fileNameOne = filenameString[0];
+                fileNameTwo = filenameString[1];
             } catch (IOException e) {
+                // call battle with no args here??
             }
+        //Enter command prompt area
         System.out.println("welcome to war! \n please enter comand(h for help)");
         while(!end){// go until flag is true
            String comand[] = input.nextLine().split(" ");
-           if(comand[0].equalsIgnoreCase("h")){
+           if(comand[0].equalsIgnoreCase("h")){// print help
             warGame.help();
-           }else if(comand[0].equalsIgnoreCase("battle")){
+           }else if(comand[0].equalsIgnoreCase("battle")){// start the turn
             warGame.takeTurn(hills,input);
             endTurn(hills);
             turnCounter++;
             System.out.println("end of turn:"+turnCounter);
-           }else if(comand[0].equalsIgnoreCase("end")){
+           }else if(comand[0].equalsIgnoreCase("end")){// end the game and save
             end = true;
-           }else if(comand[0].equalsIgnoreCase("init")){
+           }else if(comand[0].equalsIgnoreCase("init")){// for now init is not needed
            }
         }
     }
+    // just prints the help
     public static void help(){
         System.out.println();
         System.out.println("RULES:\n max unit can be 10k, all units must be given a name,\n and number that is unique to that unit");
-        System.out.println("list of comands:\n h - for help \n end - for end game(also should save into a txt file?)\n battle - to start fight in appropriate turn order\n");
+        System.out.println("list of comands:\n h - for help \n end - for end game(also should save into a txt file)\n battle - to start fight in appropriate turn order\n");
     }
     // go through turn order and ask for input on what that unit did:
     // print stats: hp, type, range, speed, etc
     // ask did move(beguining and end of turn)?
     // attack what target
         public static void takeTurn(battle feild, Scanner input){
+            // get the new proper order:
         set battleOrder = feild.turnOrder();
         set.Node next = battleOrder.getTop();
+        // go through the list one by one and make their turn
         while(next.getLink() != battleOrder.getLast()){
-            next = next.getLink(); // the next item in th order
+            // get basic info:
+            next = next.getLink(); // the next item in the order
             next.print();
-            //ask what to do?
             boolean endTurn= false;
             boolean battleBool =false;
             int maxMove = next.getMovementSpeed();
             while(!endTurn){
+                // list all the things we can do:
                 String toDo[] = input.nextLine().split(" ");
                 if(toDo[0].equalsIgnoreCase("s")){//skip turn
                     if(!battleBool && next.getUnit().getTarget() != null){
+                        // if there still is a target this will attack it
                         next.getUnit().dealDamage(next.getUnit().getTarget());
                         battleBool=true;
                     }
@@ -69,9 +79,25 @@ public class warGame {
                                 double a =(Integer.parseInt(toDo[0]));
                                 double b =maxMove;
                                 next.getUnit().setExhausted(-(a/b));// if full move units are exhausted 
-                                maxMove = maxMove - Integer.parseInt(toDo[0]); //?? check to make sure its getting the right element in toDo
+                                maxMove = maxMove - Integer.parseInt(toDo[0]);
                                 next.getUnit().setTarget(null);
                                 System.out.println("Note: must retarget after every move\nunit movement speed:"+maxMove);
+                                //check if moved out of range of anyone:
+                                set outOfRange =battleOrder.hasTarget(next.getUnit());
+                                set.Node askAbout =outOfRange.getTop();
+                                askAbout = askAbout.getLink();
+                                while(askAbout!=outOfRange.getLast()){
+                                    // ask user if current unit is still in range. must change this later
+                                    System.out.println("is "+next.getUnit().getName()+" still in range of "+askAbout.getUnit().getName()+" ?(y/n):");
+                                    toDo = input.nextLine().split(" ");
+                                    if(toDo[0].equalsIgnoreCase("yes") || toDo[0].equalsIgnoreCase("y")){
+                                        // do nothing
+                                    }else{
+                                        //change target to no one
+                                        askAbout.getUnit().setTarget(null);
+                                    }
+                                    askAbout= askAbout.getLink();
+                                }
                             }else{
                             System.out.println("cant move that far");
                             }
@@ -96,7 +122,7 @@ public class warGame {
                     endTurn = true;
                 }
             }
-           // next.unit.dealDamage(next.target);
+
         }
     }
     public static void endTurn(battle feild){
@@ -104,7 +130,7 @@ public class warGame {
         set.Node next = battleOrder.getTop();
         while(next.getLink() != battleOrder.getLast()){
             next = next.getLink();
-            next.getUnit().changeExhausted(0.5);;
+            next.getUnit().changeExhausted(0.5);
         }
     }
 }
