@@ -32,7 +32,9 @@ public class warGame {
             turnCounter++;
             System.out.println("end of turn:"+turnCounter);
            }else if(comand[0].equalsIgnoreCase("end")){// end the game and save
+            // the file names and armies are backwards. need to fix?
             fileIO.save(fileNameOne,hills.getA2());
+            fileIO.save(fileNameTwo,hills.getA1());
             end = true;
            }else if(comand[0].equalsIgnoreCase("init")){// for now init is not needed
            }
