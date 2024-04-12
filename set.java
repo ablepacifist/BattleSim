@@ -29,7 +29,9 @@ public class set{
     public Node getLast(){
     return this.last;
     }
-//????
+    public String getName(){
+        return this.name;
+    }
 // changest the name of this set
     public void insertName(String name){
         this.name = name;
