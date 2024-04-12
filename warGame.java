@@ -6,7 +6,8 @@ public class warGame {
         boolean end = false;
         int turnCounter = 0;
         boolean init = false;
-        String fileNameOne,fileNameTwo;
+        String fileNameOne="";
+        String fileNameTwo="";
         // prepare the input
         Scanner input = new Scanner(System.in);
         System.out.println("input 2 file names(separated by a comma ,):");
@@ -26,11 +27,14 @@ public class warGame {
            if(comand[0].equalsIgnoreCase("h")){// print help
             warGame.help();
            }else if(comand[0].equalsIgnoreCase("battle")){// start the turn
-            warGame.takeTurn(hills,input);
+            warGame.takeTurn(hills,input,fileNameOne,fileNameTwo);
             endTurn(hills);
             turnCounter++;
             System.out.println("end of turn:"+turnCounter);
            }else if(comand[0].equalsIgnoreCase("end")){// end the game and save
+            // the file names and armies are backwards. need to fix?
+            fileIO.save(fileNameOne,hills.getA2());
+            fileIO.save(fileNameTwo,hills.getA1());
             end = true;
            }else if(comand[0].equalsIgnoreCase("init")){// for now init is not needed
            }
@@ -46,9 +50,9 @@ public class warGame {
     // print stats: hp, type, range, speed, etc
     // ask did move(beguining and end of turn)?
     // attack what target
-        public static void takeTurn(battle feild, Scanner input){
+        public static void takeTurn(battle iniBattle, Scanner input,String fileNameOne,String fileNameTwo){
             // get the new proper order:
-        set battleOrder = feild.turnOrder();
+        set battleOrder = iniBattle.turnOrder();
         set.Node next = battleOrder.getTop();
         // go through the list one by one and make their turn
         while(next.getLink() != battleOrder.getLast()){

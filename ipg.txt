@@ -1,6 +1,4 @@
-Idiots play games
-swordsmen,2000,1.0,hunter1
-archer,2000,1.0,devon1
-spearmen,4000,0.7,hunter2
-archer,3000,0.9,sam1
-swordsmen,4000,1.0,devon2
+Ididots play games
+Swordsmen,3960,1.0,hunter1
+Spearmen,4000,1.0,hunter2
+Archer,5000,1.0,devon1
