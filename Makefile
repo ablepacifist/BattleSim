@@ -1,5 +1,5 @@
 run:
-	javac warGame.java
+	javac *.java
 	java warGame.java
 clean:
-	rm -f *.class
+	del *.class

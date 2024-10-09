@@ -15,7 +15,7 @@ public class set{
     //constructor
     public set(){
         // create dummy node for top and last
-        top= new Node(-1,new Node(2147483647,null,new archer(0, "dummie small")),new archer(0, "dummie large"));
+        top= new Node(-1,new Node(2147483647,null,new archer(0, "dummie small","DD")),new archer(0, "dummie large","DD"));
 
         last =top.link;
         last.link=top;
@@ -23,12 +23,15 @@ public class set{
         last.unit.setSpeed(100000);
     }
     //getters(not used normally but ill allow it)
+    // get top -1st of the list
     public Node getTop(){
         return this.top;
     }
+    // get last n+1th item in the list
     public Node getLast(){
     return this.last;
     }
+    // get name of this current list
     public String getName(){
         return this.name;
     }
@@ -326,35 +329,54 @@ public set hasTarget(unit inRange){
         }
         return targetedbyUnits;
 }
-    // private class of Node
-    class Node{
+    // private class of Node.. wish it were true
+    // creates a interface that will act as a bridge for
+    // Node class
+    public interface NodeInterface {
+        void print();
+        Node getLink();
+        int getMovementSpeed();
+        unit getUnit();
+    }
+
+    private class Node implements NodeInterface {
         private int data;
         private unit unit;
         private Node link;
-        // Node constructor
-        public Node(int data, Node link,unit unit){
-        this.data=data;
-        this.link=link;
-        this.unit = unit;
+
+        public Node(int data, Node link, unit unit) {
+            this.data = data;
+            this.link = link;
+            this.unit = unit;
         }
+
+        @Override
         public void print() {
-            System.out.print(unit.getName()+"("+unit.getType()+"):"+unit.getCurrentHealth()+"/"+unit.getMaxHealth()+",Exh = "+unit.getExhausted()+". ");
-       
+            System.out.print(unit.getName() + "(" + unit.getType() + "):" + unit.getCurrentHealth() + "/" + unit.getMaxHealth() + ", Exh = " + unit.getExhausted() + ". ");
         }
-        //setters
-    //getters
-        public Node getLink(){
+
+        @Override
+        public Node getLink() {
             return this.link;
         }
+
+        @Override
         public int getMovementSpeed() {
             return unit.getSpeed();
         }
-        public unit getUnit(){
+
+        @Override
+        public unit getUnit() {
             return unit;
         }
-        private int getData(){
+        
+        private int getData() {
             return this.data;
         }
+    }
+
+    public NodeInterface getTopNode() {
+        return getTop();
     }
 
 }
