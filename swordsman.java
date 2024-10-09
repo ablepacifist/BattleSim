@@ -1,8 +1,15 @@
 import java.lang.Math;
 public class swordsman implements unit {
-    private static int baseSpeed=100;
-    public static String type = "Swordsmen";
+    // x and y refer to feild 
+    private int x;
+    private int y;
+    // name and target properties
+    public String type = "Swordsmen";
     private String name;
+    private unit target;
+    private String designation;
+    //stats
+    private static int baseSpeed=100;
     private int maxHealth= 10000;// that is 10k troops. max amount
     private int currentHealth; // set this equal to number of troops left in the unit out of 10k
     private int meleeDamage=100;
@@ -10,17 +17,18 @@ public class swordsman implements unit {
     private int rangeDamage=0;
     private double exhausted;
     private int speed; // in feet?
-    private unit target;
 //constructor
 //defult
-    public swordsman(int currentHealth, String name){
+    public swordsman(int currentHealth, String name, String designation){
+        this.designation = designation;
         this.name = name;
         this.currentHealth=currentHealth;
         this.exhausted = 1.0;
         this.speed=baseSpeed;
     }
 //from txt file
-    public swordsman(int currentHealth, String name,double exhausted){
+    public swordsman(int currentHealth, String name,double exhausted, String designation){
+        this.designation = designation;
         this.name = name;
         this.currentHealth=currentHealth;
         this.exhausted = exhausted;
@@ -49,6 +57,12 @@ public class swordsman implements unit {
     }
     */
     //setters
+    public void setX(int x){
+        this.x=x;
+    }
+    public void setY(int y){
+        this.y=y;
+    }
     public void setSpeed(int newSpeed){
         this.speed = newSpeed;
     }
@@ -62,16 +76,10 @@ public class swordsman implements unit {
         this.currentHealth = health;
         throw new UnsupportedOperationException("Unimplemented method 'setCurrentHealth'");
     }
-    public void setMaxHealth(int health){
-        this.currentHealth=health;
-    }
     public void takeDamage(int damage){
         this.currentHealth = currentHealth-damage;
     }
-    public void setExhausted(double value){
-        this.exhausted = this.exhausted+value;
-        this.speed =(int)(baseSpeed * this.exhausted);
-    }
+    // change exhaustion and speed based on changed value given
     public void changeExhausted(double value){
         if(this.exhausted +value >1){
             this.exhausted =1.0;
@@ -83,6 +91,12 @@ public class swordsman implements unit {
         this.speed =(int)(baseSpeed * this.exhausted);
     }
 //getters
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
+    }
     public String getName() {
         return this.name;
     }
@@ -109,6 +123,9 @@ public class swordsman implements unit {
     }
     public unit getTarget(){
         return this.target;
+    }
+    public String getDesignation(){
+        return this.designation;
     }
 }
 
