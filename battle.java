@@ -24,9 +24,9 @@ public class battle {
 // fills in defult battle armies
 public battle(){
    this.armyOne = new set();
-   armyOne.insertName("idiots play games");
+   armyOne.insertName("Tongass gillroy");
    this.armyTwo = new set();
-   armyTwo.insertName("Tongas Gillroy");
+   armyTwo.insertName("idiots play games");
     fillArmy();
 }
 
@@ -62,7 +62,7 @@ public battle(){
             // First line of txt file is always name of the army
             read_word = theFile.nextLine();
             token = read_word.split(",");
-            this.armyTwo.insertName(read_word);
+            army.insertName(read_word);
             //txt file format:
             // unitType,health,exhausted,unitName
             // iterate over file and insert all into armyTwo
