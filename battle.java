@@ -45,7 +45,15 @@ public class battle {
       // this.armyOne.insert(104,new cavalry(1000, "U1"));
       this.armyOne.insert(105, new archer(1000, "hunter","H1"));
    }
+    // Getter for counter
+    public int getCounter() {
+      return counter;
+  }
 
+  // Setter for counter
+  public void incrementCounter() {
+      this.counter++;
+  }
    @SuppressWarnings("static-access")
    // takes the two armies and calculates their turn order by creating
    // a new set from thier union. sorted by speed.
