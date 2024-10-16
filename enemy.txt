@@ -1,4 +1,4 @@
 Tongas Gillroy
-Swordsmen,4000,1.0,U1,U1,1,1
-Spearmen,4000,1.0,U3,U3,2,1
-Archer,5000,1.0,U2,U2,3,1
+Swordsmen,4000,1.0,U1,U1,2,6
+Archer,4783,1.0,U2,U2,4,7
+Spearmen,3976,1.0,U3,U3,4,1
