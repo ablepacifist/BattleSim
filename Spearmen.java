@@ -44,17 +44,19 @@ private void init(){
     this.range = UnitConfig.spearmenRange;
     this.rangeDamage = UnitConfig.spearmenRangeDamage;
 }
-    public void dealDamage(Unit target){
+    public int dealDamage(Unit target){
         if(this.exhausted -.1 >= 0){
             this.exhausted= this.exhausted-.1;
             if(target != null){
                 int damage = (int)( meleeDamage*((double)currentHealth/(double)maxHealth));
                 target.takeDamage(damage);
                 System.out.println("did "+ damage +" damage");
+                return damage;
             }
         }else{
             System.out.println("too tired to fight");
         }
+        return 0;
     }
     //setters
     @Override

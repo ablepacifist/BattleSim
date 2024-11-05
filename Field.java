@@ -14,7 +14,7 @@ public class Field extends JPanel {
         this.yMax = 20;
         this.units = units;
         this.cellSize = cellSize;
-        // setPreferredSize(new Dimension(xMax, yMax));
+         setPreferredSize(new Dimension(xMax*cellSize, yMax*cellSize));
     }
 
     @Override

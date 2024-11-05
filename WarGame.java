@@ -1,10 +1,15 @@
 import java.io.IOException;
 import java.util.Scanner;
+/*
+ * 
+ * current issues:
+ * 3. change color of current unit
 
+ */
 public class WarGame {
     final static int CELLSIZE = 50;
-    final static int WIDTH = 600;
-    final static int HEIGHT = 600;
+    final static int WIDTH = 1200;
+    final static int HEIGHT = 800;
     final static int MAXX = WIDTH / CELLSIZE;
     final static int MAXY = HEIGHT / CELLSIZE;
 
