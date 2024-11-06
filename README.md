@@ -19,7 +19,7 @@ range(if any)
 a designation (2 char)
 name
 
-Unit types:
+#Unit types:
 swordman
 archer
 spearmen
