@@ -400,6 +400,7 @@ public void nextTurn(){
                 outputArea.append("Correct target\n");
             outputArea.append("did "+currentUnit.getUnit().dealDamage(target)+ " damage! \n");
                 currentUnit.getUnit().setTarget(target);
+                battleBool = true;
                 updateField();
             } else {
                 outputArea.append("Target is out of range\n");
