@@ -14,26 +14,26 @@ public class WarGame {
     final static int MAXY = HEIGHT / CELLSIZE;
 
     public static void main(String[] args) {
-    
+        String fileOne = "ipg.txt" ;
+        String fileTwo = "enemy.txt" ;
         try {
-            WarGameGUI theGame = new WarGameGUI(WIDTH,HEIGHT);
+            // Initialize the game with file names or any initial setup you need
+            WarGameLogic theGame = new WarGameGUI(WIDTH, HEIGHT);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
     }
 
-// returns true if given army is all dead
+    // returns true if given army is all dead
     private static boolean checkForWin(Set a1) {
         Set.NodeInterface next = a1.getTopNode().getLink();
         boolean someOneIsAlive = false;
-        while(next != a1.getLastNode()){
-            if(next.getUnit().getCurrentHealth()>0){
+        while (next != a1.getLastNode()) {
+            if (next.getUnit().getCurrentHealth() > 0) {
                 someOneIsAlive = true;
             }
             next = next.getLink();
         }
         return !someOneIsAlive;
-
     }
 }
