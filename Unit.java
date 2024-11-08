@@ -22,8 +22,7 @@ public interface Unit {
     public void changeExhausted(double value);
     public void setSpeed(int newSpeed);
 //other
-  //  public void move(int distance);
-    public void dealDamage(Unit target);
+    public int dealDamage(Unit target);
     default void setY(String y){
         this.setY(Integer.valueOf(y));
     }

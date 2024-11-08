@@ -46,7 +46,7 @@ public class Archer implements Unit {
     }
     //other:
     // calculate distance between target, deal melee or range damage acordingly
-    public void dealDamage(Unit target){
+    public int dealDamage(Unit target){
         //check if have enough exhausted and change it
         if(this.exhausted -.1 >= 0){
             this.exhausted= this.exhausted-.1;
@@ -59,20 +59,14 @@ public class Archer implements Unit {
                 }
                 target.takeDamage(damage);
                 System.out.println("did "+ damage +" damage");
+                return damage;
             }
         }else{
             System.out.println("too tired to fight");
+            return 0;
         }
+        return 0;
     }
-    /* 
-    public void dealMeleeDamage(){
-        this.exhausted= this.exhausted-.1;
-        target.takeDamage( meleeDamage/(currentHealth/maxHealth));
-    }
-    public void dealRangeDamage(){
-        target.takeDamage( meleeDamage/(currentHealth/maxHealth));
-    }
-    */
     //setters
     @Override
     public void setX(int x){
