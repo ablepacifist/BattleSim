@@ -70,6 +70,10 @@ public class FileIO {
                     toInsertUnit = new Spearmen(Integer.parseInt(token[1]), token[3], Double.parseDouble(token[2]), token[4]);
                 } else if (token[0].equalsIgnoreCase("archer")) {
                     toInsertUnit = new Archer(Integer.parseInt(token[1]), token[3], Double.parseDouble(token[2]), token[4]);
+                }else if(token[0].equalsIgnoreCase("cavalry")) {
+                    toInsertUnit = new Cavalry(Integer.parseInt(token[1]), token[3], Double.parseDouble(token[2]), token[4]);
+                }else if(token[0].equalsIgnoreCase("Catapult")) {
+                    toInsertUnit = new Catapult(Integer.parseInt(token[1]), token[3], Double.parseDouble(token[2]), token[4]);
                 }
 
                 if (toInsertUnit != null) {
@@ -86,7 +90,7 @@ public class FileIO {
             e.printStackTrace();
         } catch (IOException e) {
             // This occurs on an exception in reading the file. Usually wrong file name
-            System.out.println("running defaults due to IOException");
+            System.out.println("This occurs on an exception in reading the file. Usually wrong file name");
         }
     }
 }

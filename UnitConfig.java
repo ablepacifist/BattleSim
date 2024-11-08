@@ -14,6 +14,14 @@ public class UnitConfig {
     public static int spearmenMeleeDamage;
     public static int spearmenRange;
     public static int spearmenRangeDamage;
+    public static int cavalryBaseSpeed;
+    public static int cavalryMeleeDamage;
+    public static int cavalryRange;
+    public static int cavalryRangeDamage;
+    public static int catapultBaseSpeed;
+    public static int catapultMeleeDamage;
+    public static int catapultRange;
+    public static int catapultRangeDamage;
 
     static {
         Properties properties = new Properties();
@@ -39,6 +47,18 @@ public class UnitConfig {
             spearmenRange = parseIntProperty(properties, "Spearmen.range");
             spearmenRangeDamage = parseIntProperty(properties, "Spearmen.rangeDamage");
 
+            // Load Cavalry properties
+            cavalryBaseSpeed = parseIntProperty(properties, "Cavalry.baseSpeed");
+            cavalryMeleeDamage = parseIntProperty(properties, "Cavalry.meleeDamage");
+            cavalryRange = parseIntProperty(properties, "Cavalry.range");
+            cavalryRangeDamage = parseIntProperty(properties, "Cavalry.rangeDamage");
+
+            // Load Catapult properties
+            catapultBaseSpeed = parseIntProperty(properties, "Catapult.baseSpeed");
+            catapultMeleeDamage = parseIntProperty(properties, "Catapult.meleeDamage");
+            catapultRange = parseIntProperty(properties, "Catapult.range");
+            catapultRangeDamage = parseIntProperty(properties, "Catapult.rangeDamage");
+
             // Print properties to confirm loading
             System.out.println("Archer Base Speed: " + archerBaseSpeed);
             System.out.println("Archer Melee Damage: " + archerMeleeDamage);
@@ -52,6 +72,14 @@ public class UnitConfig {
             System.out.println("Spearmen Melee Damage: " + spearmenMeleeDamage);
             System.out.println("Spearmen Range: " + spearmenRange);
             System.out.println("Spearmen Range Damage: " + spearmenRangeDamage);
+            System.out.println("Cavalry Base Speed: " + cavalryBaseSpeed);
+            System.out.println("Cavalry Melee Damage: " + cavalryMeleeDamage);
+            System.out.println("Cavalry Range: " + cavalryRange);
+            System.out.println("Cavalry Range Damage: " + cavalryRangeDamage);
+            System.out.println("Catapult Base Speed: " + catapultBaseSpeed);
+            System.out.println("Catapult Melee Damage: " + catapultMeleeDamage);
+            System.out.println("Catapult Range: " + catapultRange);
+            System.out.println("Catapult Range Damage: " + catapultRangeDamage);
 
         } catch (IOException e) {
             e.printStackTrace();
