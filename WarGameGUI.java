@@ -53,7 +53,8 @@ public class WarGameGUI extends WarGameLogic {
             String userInput = textField.getText();
             processFileInput(userInput);
         } else {
-            outputArea.append("Input cancelled.\n");
+            outputArea.append("Input cancelled. run defults\n");
+            processFileInput("ally.txt,enemy.txt");
         }
 
         if (battleField != null) {

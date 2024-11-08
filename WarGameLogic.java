@@ -37,6 +37,7 @@ public class WarGameLogic extends JFrame {
             currentUnit = getBattle().getTurnOrder().getTop();
         }
         maxMove = currentUnit.getMovementSpeed();
+        getBattle().getBattleFeild().setCurrentUnit(currentUnit.getUnit());
     }
 
     // Process a command for the current unit
