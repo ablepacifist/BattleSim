@@ -1,0 +1,5 @@
+Tongas Gillroy
+Archer,77,1.0,U2,U2,1,6
+Spearmen,15,1.0,U3,U3,3,3
+Swordsmen,15,1.0,U1,U1,2,2
+Cavalry,100,1.0,U4,U4,3,1

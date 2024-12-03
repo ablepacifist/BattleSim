@@ -1,0 +1,5 @@
+Idiots Play Games
+Spearmen,3928,1.0,Devon1,D1,2,6
+Swordsmen,3840,1.0,Sam1,S1,4,10
+Archer,5000,1.0,Hunter1,H1,4,6
+Archer,4975,1.0,Sam2,S2,5,6
